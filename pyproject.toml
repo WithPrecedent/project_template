@@ -1,0 +1,58 @@
+# project packaging rules and instructions
+
+[project]
+name = "project_template"
+description = "template for pdm, mkdocs, and github actions project"
+authors = [{name = "Corey Rayburn Yung", email = "coreyrayburnyung@gmail.com"}]
+version = "0.1.0"
+license = {text = "Apache-2.0"}
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.urls]
+Documentation = "https://WithPrecedent.github.io/PROJECT_NAME"
+Repository = "https://github.com/WithPrecedent/PROJECT_NAME"
+Issues = "https://github.com/WithPrecedent/PROJECT_NAME/issues"
+Discussions = "https://github.com/WithPrecedent/PROJECT_NAME/discussions"
+Changelog = "https://WithPrecedent.github.io/PROJECT_NAME/changelog"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+plugins = ["pdm-multirun"]
+
+[tool.pdm.build]
+package-dir = "src"
+editable-backend = "editables"
+
+[tool.pdm.dev-dependencies]
+duty = ["duty >= 1.0"]
+ci-quality = ["wonka[duty, docs, quality, typing, security]"]
+ci-tests = ["wonka[duty, tests]"]
+docs = [
+    "markdown-callouts >= 0.2",
+    "markdown-exec >= 0.5",
+    "mkdocs >= 1.3",
+    "mkdocs-coverage >= 0.2",
+    "mkdocs-gen-files >= 0.3",
+    "mkdocs-git-committers-plugin-2 >= 1.1",
+    "mkdocs-literate-nav >= 0.4",
+    "mkdocs-material >= 7.3",
+    "mkdocs-minify-plugin >= 0.6.4",
+    "mkdocstrings[python] >= 0.18",
+    "toml >= 0.10"]
+quality = ["ruff >= 0.0.246"]
+security = ["safety >= 2"]
+tests = [
+    "pytest >= 6.2",
+    "pytest-cov >= 3.0",
+    "pytest-randomly >= 3.10",
+    "pytest-xdist >= 2.4"]
+typing = [
+    "mypy >= 0.910",
+    "types-markdown >= 3.3",
+    "types-pyyaml >= 6.0",
+    "types-toml >= 0.10"]
