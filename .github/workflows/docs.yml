@@ -3,11 +3,6 @@ name: docs
 on: 
   workflow_call:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,6 +12,6 @@ jobs:
 
       - name: Build docs
         run: mkdocs build
-        
+
       - name: Deploy docs
         run: mkdocs gh-deploy --force --clean --verbose
