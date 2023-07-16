@@ -21,6 +21,9 @@ Changelog = "https://WithPrecedent.github.io/PROJECT_NAME/changelog"
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
+[tool.mypy]
+strict = true
+
 [tool.pdm]
 plugins = ["pdm-multirun"]
 
@@ -30,8 +33,8 @@ editable-backend = "editables"
 
 [tool.pdm.dev-dependencies]
 duty = ["duty >= 1.0"]
-ci-quality = ["wonka[duty, docs, quality, typing, security]"]
-ci-tests = ["wonka[duty, tests]"]
+ci-quality = ["project_template[duty, docs, quality, typing, security]"]
+ci-tests = ["project_template[duty, tests]"]
 docs = [
     "markdown-callouts >= 0.2",
     "markdown-exec >= 0.5",
@@ -56,3 +59,90 @@ typing = [
     "types-markdown >= 3.3",
     "types-pyyaml >= 6.0",
     "types-toml >= 0.10"]
+
+[tool.ruff]
+extend-exclude = ["config", "docs", "fixtures", "scripts", "site", ".*.*"]
+fixable = ["ALL"]
+ignore = [
+    "A001",  # Variable is shadowing a Python builtin
+    "ANN101",  # Missing type annotation for self
+    "ANN102",  # Missing type annotation for cls
+    "ANN204",  # Missing return type annotation for special method __str__
+    "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+    "ARG003",  # Unused class method argument: `parameters`
+    "ARG005",  # Unused lambda argument
+    "C901",  # Too complex
+    "D105",  # Missing docstring in magic method
+    "D400",  # First line must end in a period
+    "D415",  # First line must end in a period, question mark, or exclamation point
+    "D417",  # Missing argument description in the docstring
+    "E501",  # Line too long
+    "E731",  # Do not assign a `lambda` expression, use a `def`
+    "ERA001",  # Commented out code
+    "EXE002",  # No shebang is present in an executable file
+    "FBT001",  # Boolean positional arg in function definition
+    "G004",  # Logging statement uses f-string
+    "PLR0911",  # Too many return statements
+    "PLR0912",  # Too many branches
+    "PLR0913",  # Too many arguments to function call
+    "PLR0915",  # Too many statements
+    "Q000",  # Single quotes found but double quotes preferred
+    "SLF001", # Private member accessed
+    "TID252",  # Relative imports are banned
+    "TRY003",]  # Avoid specifying long messages outside the exception class
+line-length = 80
+select = [
+    "A",
+    "ANN",
+    "ARG",
+    "B",
+    "BLE",
+    "C",
+    "C4",
+    "COM",
+    "D",
+    "DTZ",
+    "E",
+    "ERA",
+    "EXE",
+    "F",
+    "FBT",
+    "G",
+    "I",
+    "ICN",
+    "INP",
+    "ISC",
+    "N",
+    "NPY",
+    "PD",
+    "PGH",
+    "PIE",
+    "PL",
+    "PLC",
+    "PLE",
+    "PLR",
+    "PLW",
+    "PT",
+    "PYI",
+    "Q",
+    "RUF",
+    "RSE",
+    "RET",
+    "S",
+    "SIM",
+    "SLF",
+    "T",
+    "T10",
+    "T20",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.isort]
+known-first-party = ["PROJECT_NAME"]

@@ -1,12 +1,7 @@
 name: test
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: 
+  workflow_call:
 
 defaults:
   run:
@@ -18,7 +13,6 @@ env:
   PYTHONIOENCODING: UTF-8
 
 jobs:
-
     testing:
         runs-on: ${{ matrix.os }}
         strategy:
@@ -27,7 +21,6 @@ jobs:
             os: [ubuntu-latest, macOS-latest, windows-latest]
     
         steps:
-        - uses: actions/checkout@v3
         - name: Set up PDM
           uses: pdm-project/setup-pdm@v2
           with:
@@ -36,7 +29,8 @@ jobs:
         - name: Install dependencies
           run: |
             pdm sync -d -G testing
-        - name: Run Tests
+        - name: Run tests
           run: |
             pdm run -v pytest tests
+
   

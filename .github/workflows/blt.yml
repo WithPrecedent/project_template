@@ -1,6 +1,7 @@
 # Builds, Lints, and Tests Project
 
-on: [push]
+on: 
+  workflow_call:
 
 name: Build, Lint, and Test
 

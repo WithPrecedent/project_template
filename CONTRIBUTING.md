@@ -8,7 +8,7 @@ Every little bit helps, and credit will always be given.
 Fork and clone the repository, then:
 
 ```bash
-cd wonka
+cd PROJECT_NAME
 make setup
 ```
 

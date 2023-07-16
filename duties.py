@@ -169,7 +169,7 @@ def check_api(ctx: Context) -> None:
 
     griffe_check = lazy(g_check, name='griffe.check')
     ctx.run(
-        griffe_check('wonka', search_paths = ['src']),
+        griffe_check('PROJECT_NAME', search_paths = ['src']),
         title = 'Checking for API breaking changes',
         nofail = True,)
 

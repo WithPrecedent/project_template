@@ -1,4 +1,4 @@
-""" Tests suite for the project. """
+"""Tests suite for the project."""
 
 import pathlib
 

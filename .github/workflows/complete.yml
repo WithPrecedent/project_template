@@ -1,0 +1,43 @@
+# Unlike most model workflows and templates, which put all of the relevant 
+# GitHub Actions in one or two files, this template takes a different approach,
+# consistent with the typical "separation of concerns" principles of modern
+# coding. This workflow uses the "call-workflow" instruction and the 
+# on: "workflow_call" trigger to make it easier to change or create alternate
+# workflows.
+
+name: complete
+
+on: [push, pull_request]
+
+env:
+    LANG: en_US.utf-8
+    LC_ALL: en_US.utf-8
+    PYTHONIOENCODING: UTF-8
+  
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      #   with:
+      #     fetch-depth: 0
+      # - run: git checkout ${{ env.BRANCH }}
+
+  call-build:
+    uses: ./.github/workflows/pdm.yml
+
+  call-format:
+    needs: call-build
+    uses: ./.github/workflows/ruff.yml
+
+  call-security:
+    needs: call-format
+    uses: ./.github/workflows/bandit.yml
+
+  call-docs:
+    needs: call-security
+    uses: ./.github/workflows/docs.yml
+    
+  call-test:
+    needs: call-docs
+    uses: ./.github/workflows/pytest.yml
