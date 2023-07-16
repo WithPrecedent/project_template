@@ -7,9 +7,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Install mkdocs
-        run: pip install mkdocs
-
       - name: Build docs
         run: mkdocs build
 

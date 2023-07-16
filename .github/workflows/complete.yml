@@ -30,12 +30,12 @@ jobs:
     needs: call-build
     uses: ./.github/workflows/ruff.yml
 
-  # call-security:
-  #   needs: call-format
-  #   uses: ./.github/workflows/bandit.yml
+  call-security:
+    needs: call-format
+    uses: ./.github/workflows/bandit.yml
 
   call-docs:
-    needs: call-format
+    needs: call-security
     uses: ./.github/workflows/docs.yml
 
   call-test:
