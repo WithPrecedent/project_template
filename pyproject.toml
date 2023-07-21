@@ -11,11 +11,11 @@ requires-python = ">=3.9"
 dependencies = []
 
 [project.urls]
-Documentation = "https://WithPrecedent.github.io/PROJECT_NAME"
-Repository = "https://github.com/WithPrecedent/PROJECT_NAME"
-Issues = "https://github.com/WithPrecedent/PROJECT_NAME/issues"
-Discussions = "https://github.com/WithPrecedent/PROJECT_NAME/discussions"
-Changelog = "https://WithPrecedent.github.io/PROJECT_NAME/changelog"
+Documentation = "https://WithPrecedent.github.io/project_template"
+Repository = "https://github.com/WithPrecedent/project_template"
+Issues = "https://github.com/WithPrecedent/project_template/issues"
+Discussions = "https://github.com/WithPrecedent/project_template/discussions"
+Changelog = "https://WithPrecedent.github.io/project_template/changelog"
 
 [build-system]
 requires = ["pdm-backend"]
@@ -32,13 +32,13 @@ plugins = ["sync-pre-commit-lock[pdm]", "pdm-multirun"]
 
 [tool.pdm.build]
 package-dir = "src"
-editable-backend = "editables"
+# editable-backend = "editables"
 
 [tool.pdm.dev-dependencies]
-duty = ["duty >= 1.0"]
-update = ["absolufy-imports"]
-ci-quality = ["project_template[duty, docs, quality, typing, security]"]
-ci-tests = ["project_template[duty, tests]"]
+# duty = ["duty >= 1.0"]
+# update = ["absolufy-imports"]
+# ci-quality = ["project_template[duty, docs, quality, typing, security]"]
+# ci-tests = ["project_template[duty, tests]"]
 docs = [
     "markdown-callouts >= 0.2",
     "markdown-exec >= 0.5",
@@ -58,11 +58,11 @@ tests = [
     "pytest-cov >= 3.0",
     "pytest-randomly >= 3.10",
     "pytest-xdist >= 2.4"]
-typing = [
-    "mypy >= 0.910",
-    "types-markdown >= 3.3",
-    "types-pyyaml >= 6.0",
-    "types-toml >= 0.10"]
+# typing = [
+#     "mypy >= 0.910",
+#     "types-markdown >= 3.3",
+#     "types-pyyaml >= 6.0",
+#     "types-toml >= 0.10"]
 
 [tool.ruff]
 extend-exclude = ["config", "docs", "fixtures", "scripts", "site", ".*.*"]
@@ -149,4 +149,4 @@ select = [
 docstring-quotes = "double"
 
 [tool.ruff.isort]
-known-first-party = ["PROJECT_NAME"]
+known-first-party = ["project_template"]

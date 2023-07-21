@@ -2,12 +2,12 @@
 
 # Project Information
 
-site_name: PROJECT_NAME
+site_name: project_template
 site_description: PROJECT_DESCRIPTION
-site_url: https://WithPrecedent.github.io/PROJECT_NAME
-repo_name: WithPrecedent/PROJECT_NAME
-repo_url: https://github.com/WithPrecedent/PROJECT_NAME
-watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/PROJECT_NAME]
+site_url: https://WithPrecedent.github.io/project_template
+repo_name: WithPrecedent/project_template
+repo_url: https://github.com/WithPrecedent/project_template
+watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/project_template]
 copyright: Copyright &copy; 2023 Corey Rayburn Yung
 docs_dir: docs
 
@@ -17,9 +17,11 @@ nav:
 - Home:
   - Overview: index.md
   - Changelog: changelog.md
-  - Credits: credits.md
+  # - Credits: credits.md
   - License: license.md
-- User Guide: user_guide.md
+- User Guide:
+  - Design: design.md
+  - Recipes: recipes.md
 - API: reference/
 - Development:
   - Contributing: contributing.md
@@ -109,9 +111,9 @@ plugins:
 - coverage:
     page_name: coverage
     html_report_dir: htmlcov
-- gen-files:
-    scripts:
-    - scripts/gen_ref_nav.py
+# - gen-files:
+#     scripts:
+#     - scripts/gen_ref_nav.py
 - literate-nav:
     nav_file: SUMMARY.md
 - markdown-exec:
@@ -141,4 +143,4 @@ extra:
   - icon: fontawesome/brands/github
     link: https://github.com/WithPrecedent
   - icon: fontawesome/brands/python
-    link: https://pypi.org/project/PROJECT_NAME/
+    link: https://pypi.org/project/project_template/
