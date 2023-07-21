@@ -9,7 +9,7 @@ defaults:
 
 jobs:
 
-  quality:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -21,6 +21,9 @@ jobs:
       uses: pdm-project/setup-pdm@v3
       with:
         python-version: "3.11"
+
+    - name: Resolving project dependencies
+      run: pdm lock -v --no-cross-platform
 
     - name: Install project dependencies
       run: pdm install

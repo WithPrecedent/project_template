@@ -21,7 +21,10 @@ jobs:
       uses: pdm-project/setup-pdm@v3
       with:
         python-version: "3.11"
-
+    
+    - name: Resolving dependencies
+      run: pdm lock -v --no-cross-platform
+      
     - name: Install dependencies
       run: pdm install
 
