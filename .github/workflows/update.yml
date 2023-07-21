@@ -15,29 +15,19 @@ env:
     PYTHONIOENCODING: UTF-8
   
 jobs:
-  checkout:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      #   with:
-      #     fetch-depth: 0
-      # - run: git checkout ${{ env.BRANCH }}
-
-  call-build:
-    uses: ./.github/workflows/pdm.yml
-
-  call-format:
-    needs: call-build
-    uses: ./.github/workflows/ruff.yml
+  
+  call-test:
+    uses: ./.github/workflows/pytest.yml
 
   call-security:
-    needs: call-format
-    uses: ./.github/workflows/bandit.yml
+      needs: call-test
+      uses: ./.github/workflows/bandit.yml
+  
+  call-format:
+    needs: call-security
+    uses: ./.github/workflows/ruff.yml
 
   call-docs:
-    needs: call-security
+    needs: call-format
     uses: ./.github/workflows/docs.yml
 
-  call-test:
-    needs: call-docs
-    uses: ./.github/workflows/pytest.yml

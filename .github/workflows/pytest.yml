@@ -13,7 +13,7 @@ on:
 #   PYTHONIOENCODING: UTF-8
 
 jobs:
-    testing:
+    test:
         runs-on: ${{ matrix.os }}
         strategy:
           matrix:
@@ -21,17 +21,22 @@ jobs:
             os: [ubuntu-latest, macOS-latest, windows-latest]
     
         steps:
-        - name: Set up PDM
-          uses: pdm-project/setup-pdm@v2
-          with:
-            python-version: ${{ matrix.python-version }}
+          - name: Checkout
+            uses: actions/checkout@v3
+      
+          - name: Set up PDM
+            uses: pdm-project/setup-pdm@v2
+            with:
+              python-version: ${{ matrix.python-version }}
+      
+          - name: Resolving dependencies
+            run: pdm lock -v --no-cross-platform
+            
+          - name: Install dependencies
+            run: pdm install
+
+          - name: Run tests with pytest
+            run: |
+              pdm run -v pytest tests
+
     
-        - name: Install testing dependencies
-          run: |
-            pdm sync -d -G testing
-
-        - name: Run tests with pytest
-          run: |
-            pdm run -v pytest tests
-
-  
