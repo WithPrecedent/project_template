@@ -140,8 +140,6 @@ site/
 # PDM dependency management
 .copier-answers.yml
 .idea/
-pdm.lock
-pdm.toml
 .pdm-plugins/
 .pdm-python
 __pypackages__/
