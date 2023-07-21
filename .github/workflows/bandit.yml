@@ -8,5 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Run bandit scan
-      run: bandit -c pyproject.toml -r .
+    - name: Bandit security check
+      uses: jpetrucciani/bandit-check@main
+      with:
+        path: '.'
+        bandit_flags: '-c pyproject.toml -r'

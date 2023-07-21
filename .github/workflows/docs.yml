@@ -7,8 +7,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Build docs
+      - name: Build documentation with MkDocs
         run: mkdocs build
 
-      - name: Deploy docs
+      - name: Deploy documentation to GitHub Pages
         run: mkdocs gh-deploy --force --clean --verbose

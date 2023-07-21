@@ -5,9 +5,9 @@
 # on: "workflow_call" trigger to make it easier to change or create alternate
 # workflows.
 
-name: complete
+name: update
 
-on: [push, pull_request]
+on: push
 
 env:
     LANG: en_US.utf-8

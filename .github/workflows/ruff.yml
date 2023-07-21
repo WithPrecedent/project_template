@@ -1,3 +1,5 @@
+# GitHub Action for ruff formatter
+
 name: ruff
 
 on: 
@@ -7,12 +9,16 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - name: Install ruff
+      - name: Install Ruff
         uses: chartboost/ruff-action@v1
-      - name: Install ruff dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install ruff
+        with:
+          src: "./src"
+
+      # - name: Install Ruff dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install ruff
+
       # Include `--format=github` to enable automatic inline annotations.
-      - name: Run ruff
+      - name: Run Ruff
         run: ruff check --format=github .

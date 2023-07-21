@@ -21,11 +21,14 @@ Changelog = "https://WithPrecedent.github.io/PROJECT_NAME/changelog"
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
+[tool.bandit]
+exclude_dirs = ["tests"]
+
 [tool.mypy]
 strict = true
 
 [tool.pdm]
-plugins = ["pdm-multirun"]
+plugins = ["sync-pre-commit-lock[pdm]", "pdm-multirun"]
 
 [tool.pdm.build]
 package-dir = "src"
@@ -33,6 +36,7 @@ editable-backend = "editables"
 
 [tool.pdm.dev-dependencies]
 duty = ["duty >= 1.0"]
+update = ["absolufy-imports"]
 ci-quality = ["project_template[duty, docs, quality, typing, security]"]
 ci-tests = ["project_template[duty, tests]"]
 docs = [
