@@ -19,6 +19,7 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
 
     steps:
+
     - name: Checkout
       uses: actions/checkout@v3
 
@@ -50,6 +51,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
+      
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - uses: jpetrucciani/bandit-check@master
       with:
@@ -61,20 +65,26 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - name: Setup Ruff
-        uses: chartboost/ruff-action@v1
-        with:
-          src: "./src"
+    - name: Setup Ruff
+      uses: chartboost/ruff-action@v1
+      with:
+        src: "./src"
 
-      - name: Run Ruff
-        run: ruff check --format=github .
+    - name: Run Ruff
+      run: ruff check --format=github .
 
   docs:
 
     runs-on: ubuntu-latest
     
     steps:
+      
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - name: Build documentation with MkDocs
       run: mkdocs build
