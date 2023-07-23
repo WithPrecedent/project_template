@@ -1,4 +1,4 @@
-name: test
+name: pytest
 
 on: 
   workflow_call:
@@ -13,14 +13,18 @@ on:
 #   PYTHONIOENCODING: UTF-8
 
 jobs:
+
     test:
+
         runs-on: ${{ matrix.os }}
+
         strategy:
           matrix:
             python-version: ['3.10', '3.11']
             os: [ubuntu-latest, macOS-latest, windows-latest]
     
         steps:
+
           - name: Checkout
             uses: actions/checkout@v3
       

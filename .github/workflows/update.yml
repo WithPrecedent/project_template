@@ -15,13 +15,13 @@ env:
     PYTHONIOENCODING: UTF-8
   
 jobs:
-  
+
   call-test:
     uses: ./.github/workflows/pytest.yml
 
   call-security:
-      needs: call-test
-      uses: ./.github/workflows/bandit.yml
+    needs: call-test
+    uses: ./.github/workflows/bandit.yml
   
   call-format:
     needs: call-security
