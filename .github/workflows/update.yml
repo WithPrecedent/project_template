@@ -1,10 +1,3 @@
-# Unlike most model workflows and templates, which put all of the relevant 
-# GitHub Actions in one or two files, this template takes a different approach,
-# consistent with the typical "separation of concerns" principles of modern
-# coding. This workflow uses the "call-workflow" instruction and the 
-# on: "workflow_call" trigger to make it easier to change or create alternate
-# workflows.
-
 name: update
 
 on: push
@@ -16,18 +9,76 @@ env:
   
 jobs:
 
-  call-test:
-    uses: ./.github/workflows/pytest.yml
+  test:
 
-  call-security:
-    needs: call-test
-    uses: ./.github/workflows/bandit.yml
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11']
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup PDM
+      uses: ./
+      id: setup-pdm
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: true
+        allow-python-prereleases: true
+
+    - name: Check output
+      run: |
+        echo ${{ steps.setup-pdm.outputs.pdm-bin }}
+        echo ${{ steps.setup-pdm.outputs.pdm-version }}
+        echo ${{ steps.setup-pdm.outputs.python-path }}
+        echo ${{ steps.setup-pdm.outputs.python-version }}
+
+    - name: Install dependencies
+      run: pdm install -v && pdm info
+
+    - name: Verify python version
+      run: pdm run python test.py
+      env:
+        PYTHON_VERSION: ${{ matrix.python-version }}
+
+  security:
+
+    runs-on: ubuntu-latest
+
+    steps: 
+
+    - uses: jpetrucciani/bandit-check@master
+      with:
+        path: '.'
+        bandit_flags: '-c pyproject.toml -r'
   
-  call-format:
-    needs: call-security
-    uses: ./.github/workflows/ruff.yml
+  format:
 
-  call-docs:
-    needs: call-format
-    uses: ./.github/workflows/docs.yml
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - name: Setup Ruff
+        uses: chartboost/ruff-action@v1
+        with:
+          src: "./src"
+
+      - name: Run Ruff
+        run: ruff check --format=github .
+
+  docs:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+
+    - name: Build documentation with MkDocs
+      run: mkdocs build
+
+    - name: Deploy documentation to GitHub Pages
+      run: mkdocs gh-deploy --force --clean --verbose
 
