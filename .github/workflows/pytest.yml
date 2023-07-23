@@ -3,18 +3,9 @@ name: pytest
 on: 
   workflow_call:
 
-# defaults:
-#   run:
-#     shell: bash
-
-# env:
-#   LANG: en_US.utf-8
-#   LC_ALL: en_US.utf-8
-#   PYTHONIOENCODING: UTF-8
-
 jobs:
 
-  test:
+  testing:
 
     runs-on: ${{ matrix.os }}
 
@@ -24,10 +15,7 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
 
     steps:
-
-    - name: Checkout
-      uses: actions/checkout@v3
-
+    - uses: actions/checkout@v3
     - name: Setup PDM
       uses: ./
       id: setup-pdm
