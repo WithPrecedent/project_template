@@ -2,8 +2,8 @@
 
 [project]
 name = "project_template"
-description = "template for pdm, mkdocs, and github actions project"
-authors = [{name = "Corey Rayburn Yung", email = "coreyrayburnyung@gmail.com"}]
+description = "PROJECT DESCRIPTION"
+authors = [{name = "PROJECT_AUTHOR", email = "AUTHOR_EMAIL@DOMAIN.COM"}]
 version = "0.1.0"
 license = {text = "Apache-2.0"}
 readme = "README.md"
