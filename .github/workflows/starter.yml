@@ -1,0 +1,50 @@
+name: Python package
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Setup PDM
+      uses: ./
+      id: setup-pdm
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: true
+        allow-python-prereleases: true
+  
+    - name: Check output
+      run: |
+        echo ${{ steps.setup-pdm.outputs.pdm-bin }}
+        echo ${{ steps.setup-pdm.outputs.pdm-version }}
+        echo ${{ steps.setup-pdm.outputs.python-path }}
+        echo ${{ steps.setup-pdm.outputs.python-version }}
+
+    - name: Install dependencies
+      run: pdm install -v && pdm info
+
+    # - name: Install Ruff
+    #   uses: chartboost/ruff-action@v1
+    #   with:
+    #     src: "./src"
+
+    - name: Run Ruff
+      run: pdm run ruff check --format=github .

@@ -1,6 +1,7 @@
 name: update
 
-on: push
+on: 
+  workflow_call:
 
 env:
     LANG: en_US.utf-8

@@ -64,6 +64,11 @@ tests = [
 #     "types-pyyaml >= 6.0",
 #     "types-toml >= 0.10"]
 
+[tool.pytest.ini_options]
+addopts = "--showlocals"
+asyncio_mode = "auto"
+pythonpath = ["src"]
+
 [tool.ruff]
 extend-exclude = ["config", "docs", "fixtures", "scripts", "site", ".*.*"]
 fixable = ["ALL"]
