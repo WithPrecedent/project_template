@@ -1,12 +1,9 @@
-name: Python package
+name: starter
 
-on:
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+on: [push, pull_request]
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
@@ -48,4 +45,3 @@ jobs:
 
     - name: Run Ruff
       run: pdm run ruff check --format=github .
-      
