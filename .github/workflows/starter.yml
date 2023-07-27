@@ -38,10 +38,16 @@ jobs:
       shell: bash
       run: pdm install -v && pdm info
 
-    # - name: Install Ruff
-    #   uses: chartboost/ruff-action@v1
-    #   with:
-    #     src: "./src"
-
     - name: Run Ruff
       run: pdm run ruff check --format=github .
+
+    - name: Run Bandit 
+      run: pdm run bandit -c pyproject.toml -r
+
+    - name: Build documentation with MkDocs
+      run: pdm run mkdocs build
+
+    - name: Deploy documentation to GitHub Pages
+      run: pdm run mkdocs gh-deploy --force --clean --verbose
+
+

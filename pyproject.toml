@@ -24,9 +24,6 @@ build-backend = "pdm.backend"
 [tool.bandit]
 exclude_dirs = ["tests"]
 
-[tool.mypy]
-strict = true
-
 [tool.pdm]
 plugins = ["sync-pre-commit-lock[pdm]", "pdm-multirun"]
 
@@ -71,6 +68,7 @@ pythonpath = ["src"]
 
 [tool.ruff]
 extend-exclude = ["config", "docs", "fixtures", "scripts", "site", ".*.*"]
+fix = true
 fixable = ["ALL"]
 ignore = [
     "A001",  # Variable is shadowing a Python builtin
@@ -137,7 +135,6 @@ select = [
     "RUF",
     "RSE",
     "RET",
-    "S",
     "SIM",
     "SLF",
     "T",
