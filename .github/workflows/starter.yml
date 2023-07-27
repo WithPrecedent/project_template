@@ -42,7 +42,7 @@ jobs:
       run: pdm run ruff check --format=github .
 
     - name: Run Bandit 
-      run: pdm run bandit -c pyproject.toml -r
+      run: pdm run bandit -r
 
     - name: Build documentation with MkDocs
       run: pdm run mkdocs build

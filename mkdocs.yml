@@ -8,7 +8,7 @@ site_url: https://WithPrecedent.github.io/project_template
 repo_name: WithPrecedent/project_template
 repo_url: https://github.com/WithPrecedent/project_template
 watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/project_template]
-copyright: Copyright &copy; 2023 Corey Rayburn Yung
+copyright: Copyright &copy; 2023 PROJECT_AUTHOR
 docs_dir: docs
 
 # Documentation Structure
