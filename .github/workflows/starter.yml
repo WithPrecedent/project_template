@@ -41,13 +41,6 @@ jobs:
     - name: Run Ruff
       run: pdm run ruff check --format=github .
 
-    # - name: Run Bandit 
-    #   run: pdm run bandit
-    - uses: jpetrucciani/bandit-check@master
-      with:
-        path: '.'
-        bandit_flags: '-c pyproject.toml -r'
-        
     - name: Build documentation with MkDocs
       run: pdm run mkdocs build
 

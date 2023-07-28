@@ -128,6 +128,7 @@ select = [
     "RUF",
     "RSE",
     "RET",
+    "S",
     "SIM",
     "SLF",
     "T",
