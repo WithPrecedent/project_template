@@ -1,7 +1,6 @@
 name: starter
 
-on:
-  workflow_call:
+on: [push, pull_request]
 
 jobs:
 
