@@ -1,3 +1,5 @@
+# Action for regular updates to any branch
+
 name: update
 
 on: [push, pull_request]

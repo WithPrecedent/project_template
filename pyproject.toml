@@ -42,7 +42,7 @@ docs = [
     "mkdocs-minify-plugin >= 0.6.4",
     "mkdocstrings[python] >= 0.18",
     "toml >= 0.10"]
-quality = [  "pre-commit>=3.3.2", "ruff >= 0.0.246"]
+quality = ["pre-commit>=3.3.2", "ruff >= 0.0.246"]
 security = ["bandit >= 1.7.5"]
 tests = [
     "coverage>=7.2.7",

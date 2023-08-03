@@ -1,9 +1,4 @@
-# Unlike most model workflows and templates, which put all of the relevant 
-# GitHub Actions in one or two files, this template takes a different approach,
-# consistent with the typical "separation of concerns" principles of modern
-# coding. This workflow uses the "call-workflow" instruction and the 
-# on: "workflow_call" trigger to make it easier to change or create alternate
-# workflows.
+# Action for merging a development branch into main
 
 name: release
 
@@ -18,9 +13,12 @@ env:
   PYTHONIOENCODING: UTF-8
       
 jobs:
+
   main:
+
     name: Merge development to to main
     runs-on: ubuntu-latest
+    
     steps:
       - name: git checkout
         uses: actions/checkout@v3
