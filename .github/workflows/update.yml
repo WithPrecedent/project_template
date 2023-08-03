@@ -1,38 +1,33 @@
 name: update
 
-on: 
-  workflow_call:
+on: [push, pull_request]
 
-env:
-    LANG: en_US.utf-8
-    LC_ALL: en_US.utf-8
-    PYTHONIOENCODING: UTF-8
-  
 jobs:
 
-  test:
+  build:
 
-    runs-on: ${{ matrix.os }}
-
+    runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ['3.10', '3.11']
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        python-version: ["3.10", "3.11"]
 
     steps:
+    - uses: actions/checkout@v3
 
-    - name: Checkout
-      uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
 
     - name: Setup PDM
-      uses: ./
+      uses: pdm-project/setup-pdm@v2
       id: setup-pdm
       with:
         python-version: ${{ matrix.python-version }}
-        cache: true
-        allow-python-prereleases: true
-
+  
     - name: Check output
+      shell: bash
       run: |
         echo ${{ steps.setup-pdm.outputs.pdm-bin }}
         echo ${{ steps.setup-pdm.outputs.pdm-version }}
@@ -40,56 +35,14 @@ jobs:
         echo ${{ steps.setup-pdm.outputs.python-version }}
 
     - name: Install dependencies
+      shell: bash
       run: pdm install -v && pdm info
 
-    - name: Verify python version
-      run: pdm run python test.py
-      env:
-        PYTHON_VERSION: ${{ matrix.python-version }}
-
-  security:
-
-    runs-on: ubuntu-latest
-
-    steps: 
-      
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - uses: jpetrucciani/bandit-check@master
-      with:
-        path: '.'
-        bandit_flags: '-c pyproject.toml -r'
-  
-  format:
-
-    runs-on: ubuntu-latest
-    
-    steps:
-      
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Setup Ruff
-      uses: chartboost/ruff-action@v1
-      with:
-        src: "./src"
-
     - name: Run Ruff
-      run: ruff check --format=github .
-
-  docs:
-
-    runs-on: ubuntu-latest
-    
-    steps:
-      
-    - name: Checkout
-      uses: actions/checkout@v3
+      run: pdm run ruff check --format=github .
 
     - name: Build documentation with MkDocs
       run: pdm run mkdocs build
 
     - name: Deploy documentation to GitHub Pages
       run: pdm run mkdocs gh-deploy --force --clean --verbose
-

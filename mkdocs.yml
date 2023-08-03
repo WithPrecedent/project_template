@@ -17,7 +17,7 @@ nav:
 - Home:
   - Overview: index.md
   - Changelog: changelog.md
-  # - Credits: credits.md
+  - Credits: credits.md
   - License: license.md
 - User Guide:
   - Design: design.md
@@ -72,7 +72,6 @@ theme:
     toggle:
       icon: material/weather-night
       name: Switch to system preference
-  # use_directory_urls: false
 
 # Extras, Extensions, and Plugins
 
@@ -111,9 +110,9 @@ plugins:
 - coverage:
     page_name: coverage
     html_report_dir: htmlcov
-# - gen-files:
-#     scripts:
-#     - scripts/gen_ref_nav.py
+- gen-files:
+    scripts:
+    - scripts/gen_ref_nav.py
 - literate-nav:
     nav_file: SUMMARY.md
 - markdown-exec:
@@ -134,8 +133,6 @@ plugins:
           separate_signature: false
           show_signature_annotations: false
           # show_submodules: true
-# - render_swagger:
-#     title: API Reference        
 - search:
 
 extra:
