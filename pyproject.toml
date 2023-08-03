@@ -58,7 +58,7 @@ filterwarnings = ["ignore::DeprecationWarning"]
 pythonpath = ["src"]
 
 [tool.ruff]
-extend-exclude = ["config", "docs", "fixtures", "scripts", "site", ".*.*"]
+extend-exclude = ["docs", "fixtures", "scripts", "site", "tests", ".*.*"]
 fix = true
 fixable = ["ALL"]
 ignore = [
