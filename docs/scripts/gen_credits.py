@@ -87,7 +87,6 @@ def _render_credits() -> str:
 
         [`python`](https://www.python.org/) |
         [`pdm`](https://pdm.fming.dev/) |
-        [`copier-pdm`](https://github.com/pawamoy/copier-pdm)
 
         {% macro dep_line(dep) -%}
         [`{{ dep.name }}`](https://pypi.org/project/{{ dep.name }}/) | {{ dep.summary }} | {{ ("`" ~ dep.spec ~ "`") if dep.spec else "" }} | `{{ dep.version }}` | {{ dep.license }}

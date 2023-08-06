@@ -12,11 +12,11 @@ keywords = []
 dependencies = []
 
 [project.urls]
-Documentation = "https://WithPrecedent.github.io/project_template"
-Repository = "https://github.com/WithPrecedent/project_template"
-Issues = "https://github.com/WithPrecedent/project_template/issues"
-Discussions = "https://github.com/WithPrecedent/project_template/discussions"
-Changelog = "https://WithPrecedent.github.io/project_template/changelog"
+Documentation = "https://GITHUB_NAME.github.io/project_template"
+Repository = "https://github.com/GITHUB_NAME/project_template"
+Issues = "https://github.com/GITHUB_NAME/project_template/issues"
+Discussions = "https://github.com/GITHUB_NAME/project_template/discussions"
+Changelog = "https://GITHUB_NAME.github.io/project_template/changelog"
 
 [build-system]
 requires = ["pdm-backend"]

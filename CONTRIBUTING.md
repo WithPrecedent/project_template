@@ -27,7 +27,7 @@ make setup
 
 You now have the dependencies installed.
 
-You can run the application with `pdm run wonka [ARGS...]`.
+You can run the application with `pdm run project_template [ARGS...]`.
 
 Run `make help` to see all the available actions.
 

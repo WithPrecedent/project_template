@@ -1,13 +1,18 @@
-# Project documentation rules and instructions
+# Project Documentation Rules and Instructions
 
 # Project Information
 
 site_name: project_template
 site_description: PROJECT_DESCRIPTION
-site_url: https://WithPrecedent.github.io/project_template
-repo_name: WithPrecedent/project_template
-repo_url: https://github.com/WithPrecedent/project_template
-watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/project_template]
+site_url: https://GITHUB_NAME.github.io/project_template
+repo_name: GITHUB_NAME/project_template
+repo_url: https://github.com/GITHUB_NAME/project_template
+watch: [
+  mkdocs.yml, 
+  README.md, 
+  CONTRIBUTING.md, 
+  CHANGELOG.md, 
+  src/project_template]
 copyright: Copyright &copy; 2023 PROJECT_AUTHOR
 docs_dir: docs
 
@@ -58,7 +63,7 @@ theme:
     toggle:
       icon: material/brightness-auto
       name: Switch to light mode
-  - media: "(prefers-color-scheme: lighht)"
+  - media: "(prefers-color-scheme: light)"
     scheme: default
     primary: teal
     accent: purple
@@ -132,12 +137,11 @@ plugins:
           merge_init_into_class: true
           separate_signature: false
           show_signature_annotations: false
-          # show_submodules: true
 - search:
 
 extra:
   social:
   - icon: fontawesome/brands/github
-    link: https://github.com/WithPrecedent
+    link: https://github.com/GITHUB_NAME
   - icon: fontawesome/brands/python
     link: https://pypi.org/project/project_template/
