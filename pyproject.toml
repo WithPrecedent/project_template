@@ -144,3 +144,6 @@ docstring-quotes = "double"
 
 [tool.ruff.isort]
 known-first-party = ["project_template"]
+
+[tool.semantic_release.remote]
+password = { env = "GH_TOKEN" }

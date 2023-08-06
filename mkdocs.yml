@@ -112,7 +112,7 @@ plugins:
     html_report_dir: htmlcov
 - gen-files:
     scripts:
-    - scripts/gen_ref_nav.py
+    - docs/scripts/gen_ref_nav.py
 - literate-nav:
     nav_file: SUMMARY.md
 - markdown-exec:
