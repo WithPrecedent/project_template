@@ -40,6 +40,9 @@ jobs:
       shell: bash
       run: pdm install -v && pdm info
 
+    - name: Run Tests
+      run: pdm run -v pytest tests
+      
     - name: Run Ruff
       run: pdm run ruff check --format=github .
 
